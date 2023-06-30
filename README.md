@@ -1,31 +1,50 @@
-# **ETH Beginner - Metacrafter Course**
-Welcome to the ETH Beginner project repository! This repository contains the assignments and challenges completed as part of the Metacrafter course, focusing on blockchain and smart contracts using the Ethereum platform. Here, you will find a collection of code and resources to help you understand and explore the fundamentals of blockchain technology and Ethereum development.
+# MyToken
 
-## **Table of Contents**
-Challenges
-Last Assignment
-Contributing
-Resources
-License
+This is a simple ERC-20 token contract implemented in Solidity. The contract allows for the creation and destruction of tokens, as well as storing information about the token.
 
-## **Challenges**
-Throughout the course, you will encounter various challenges designed to test your understanding of blockchain concepts and smart contract development. These challenges aim to provide hands-on experience in building decentralized applications (DApps) on the Ethereum platform. You can find the challenges in the Challenges directory.
+## Requirements
 
-## **Last Assignment**
-The last assignment in the Metacrafter course focuses on building a token using smart contracts on Ethereum. This assignment serves as a culmination of your learning journey, where you will apply the concepts and techniques covered in the course. 
+1. The contract has public variables that store the details about the coin:
+   - `tokenName`: A string representing the name of the token.
+   - `tokenAbbrv`: A string representing the abbreviation of the token.
+   - `totalSupply`: An unsigned integer representing the total supply of the token.
 
-## **Contributing**
-Contributions to this project are welcome! If you have any improvements, fixes, or new challenges to add, please feel free to submit a pull request.
+2. The contract has a mapping of addresses to balances:
+   - `balances`: A mapping that associates addresses with their corresponding token balances.
 
-## **Resources**
-Here are some helpful resources to deepen your understanding of blockchain, Ethereum, and smart contracts:
+3. The contract has a `mint` function that increases the total supply and the balance of the "sender" address by a given value:
+   - Parameters:
+     - `_address`: The address to which the tokens will be minted.
+     - `_value`: The amount of tokens to be minted.
+   - Actions:
+     - Increase the `totalSupply` by `_value`.
+     - Increase the balance of the `_address` by `_value`.
 
-Ethereum Documentation
-Solidity Documentation
-Ethereum Stack Exchange
-OpenZeppelin Contracts
-Web3.js Documentation
-Truffle Framework
+4. The contract has a `burn` function that decreases the total supply and the balance of the "sender" address by a given value:
+   - Parameters:
+     - `_address`: The address from which the tokens will be burned.
+     - `_value`: The amount of tokens to be burned.
+   - Actions:
+     - Check if the balance of the `_address` is greater than or equal to `_value`.
+     - If true, decrease the `totalSupply` by `_value`.
+     - Decrease the balance of the `_address` by `_value`.
 
-## **License**
-This project is licensed under the MIT License. Feel free to use, modify, and distribute the code for educational purposes.
+## Usage
+
+1. Deploy the `MyToken` contract to a supported Ethereum network.
+
+2. Once deployed, you can interact with the contract by calling the following functions:
+
+   - `mint`: Creates new tokens and assigns them to a specified address.
+     - Parameters:
+       - `_address`: The address to which the tokens will be minted.
+       - `_value`: The amount of tokens to be minted.
+
+   - `burn`: Destroys existing tokens by reducing the total supply and the balance of a specified address.
+     - Parameters:
+       - `_address`: The address from which the tokens will be burned.
+       - `_value`: The amount of tokens to be burned.
+
+## License
+
+This contract is licensed under the MIT License. SPDX-License-Identifier: MIT.
